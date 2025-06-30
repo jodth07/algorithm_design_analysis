@@ -1,0 +1,10 @@
+*.ipynb
+.venv
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+*.gdoc
+*.pdf
+
+/target/*

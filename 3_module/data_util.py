@@ -14,12 +14,14 @@ class Name:
     last_name: str
     middle_name: Optional[str] = None
 
+
 @dataclass
 class Patient:
     patient_id: str
     name: Name
     gender: str
     date_of_birth: datetime.date
+
 
 class BaseDataUtil(ABC):
     @abstractmethod
@@ -53,7 +55,9 @@ class DataUtil(BaseDataUtil):
         with open(filepath, "w") as f:
             json.dump(self._json_data, f, indent=2)
 
-    def parse_to_objects(self, filepath: Optional[str] = None, url: Optional[str] = None) -> List[Patient]:
+    def parse_to_objects(
+        self, filepath: Optional[str] = None, url: Optional[str] = None
+    ) -> List[Patient]:
         """Parse in-memory JSON to Patient objects or load from file."""
         if self._json_data is None:
             print("Data not in memory. Loading from file...")
@@ -66,7 +70,7 @@ class DataUtil(BaseDataUtil):
                 patient_id=item["patient_id"],
                 name=name,
                 gender=item["gender"],
-                date_of_birth=dob
+                date_of_birth=dob,
             )
             patients.append(patient)
         return patients

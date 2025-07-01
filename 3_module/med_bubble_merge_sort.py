@@ -9,11 +9,13 @@ import time
 
 from data_util import DataUtil
 
+
 @dataclass
 class Name:
     first_name: str
     last_name: str
     middle_name: Optional[str] = None
+
 
 @total_ordering
 @dataclass
@@ -26,15 +28,23 @@ class Patient:
     def __eq__(self, other):
         if not isinstance(other, Patient):
             return NotImplemented
-        return (self.patient_id, self.name, self.gender, self.date_of_birth) == \
-               (other.patient_id, other.name, other.gender, other.date_of_birth)
+        return (self.patient_id, self.name, self.gender, self.date_of_birth) == (
+            other.patient_id,
+            other.name,
+            other.gender,
+            other.date_of_birth,
+        )
 
     def __lt__(self, other):
         if not isinstance(other, Patient):
             return NotImplemented
         # Default sort by last name, then first name, then patient_id
-        return ((self.name.last_name, self.name.first_name, self.patient_id) <
-                (other.name.last_name, other.name.first_name, other.patient_id))
+        return (self.name.last_name, self.name.first_name, self.patient_id) < (
+            other.name.last_name,
+            other.name.first_name,
+            other.patient_id,
+        )
+
 
 class EMRSystem(ABC):
     def __init__(self):
@@ -42,7 +52,7 @@ class EMRSystem(ABC):
         self.original_ordered_records: List[Patient] = []
 
     @abstractmethod
-    def add_record(self, patient: Patient) -> 'HospitalEMRSystem':
+    def add_record(self, patient: Patient) -> "HospitalEMRSystem":
         pass
 
     @abstractmethod
@@ -50,15 +60,15 @@ class EMRSystem(ABC):
         pass
 
     @abstractmethod
-    def bubble_sort_records(self, field: str) -> 'HospitalEMRSystem':
+    def bubble_sort_records(self, field: str) -> "HospitalEMRSystem":
         pass
 
     @abstractmethod
-    def merge_sort_records(self, field: str) -> 'HospitalEMRSystem':
+    def merge_sort_records(self, field: str) -> "HospitalEMRSystem":
         pass
 
     @abstractmethod
-    def revert(self) -> 'HospitalEMRSystem':
+    def revert(self) -> "HospitalEMRSystem":
         pass
 
 
@@ -72,11 +82,11 @@ class HospitalEMRSystem(EMRSystem):
             value = getattr(value, part)
         return value
 
-    def add_record(self, patient: Patient) -> 'HospitalEMRSystem':
+    def add_record(self, patient: Patient) -> "HospitalEMRSystem":
         self.add_records([patient])
         return self
 
-    def add_records(self, patients: List[Patient]) -> 'HospitalEMRSystem':
+    def add_records(self, patients: List[Patient]) -> "HospitalEMRSystem":
         self.records.extend(patients)
         self.original_ordered_records.extend(patients)
         return self
@@ -86,12 +96,11 @@ class HospitalEMRSystem(EMRSystem):
             return self.original_ordered_records
         return self.records
 
-    def revert(self) -> 'HospitalEMRSystem':
+    def revert(self) -> "HospitalEMRSystem":
         self.records = copy.deepcopy(self.original_ordered_records)
         return self
 
-
-    def bubble_sort_records(self, field: str) -> 'HospitalEMRSystem':
+    def bubble_sort_records(self, field: str) -> "HospitalEMRSystem":
         n = len(self.records)
 
         for i in range(n):
@@ -99,11 +108,14 @@ class HospitalEMRSystem(EMRSystem):
                 a = self._get_sort_key(self.records[j], field)
                 b = self._get_sort_key(self.records[j + 1], field)
                 if a > b:
-                    self.records[j], self.records[j + 1] = self.records[j + 1], self.records[j]
+                    self.records[j], self.records[j + 1] = (
+                        self.records[j + 1],
+                        self.records[j],
+                    )
 
         return self
 
-    def merge_sort_records(self, field: str) -> 'HospitalEMRSystem':
+    def merge_sort_records(self, field: str) -> "HospitalEMRSystem":
         def merge_sort(arr: List[Patient]) -> List[Patient]:
             if len(arr) <= 1:
                 return arr
@@ -127,6 +139,7 @@ class HospitalEMRSystem(EMRSystem):
             merged.extend(left[i:])
             merged.extend(right[j:])
             return merged
+
         self.records = merge_sort(self.records)
         return self
 
@@ -144,6 +157,7 @@ def load_records(records_path):
     print([p.name.last_name for p in emr.list_records()][:10])
     return emr
 
+
 def benchmark_bbs(emr) -> float:
     print("\nBubble Sort: Starting ...")
     start_time = time.perf_counter()
@@ -153,6 +167,7 @@ def benchmark_bbs(emr) -> float:
     print(f"Bubble Sort end time:{end_time}")
     return end_time - start_time
 
+
 def benchmark_ms(emr) -> float:
     print("\nMerge Sort Starting ...")
     start_time = time.perf_counter()
@@ -161,6 +176,7 @@ def benchmark_ms(emr) -> float:
     print(f"Merge Sort start time:{start_time}")
     print(f"Merge Sort end time:{end_time}")
     return end_time - start_time
+
 
 if __name__ == "__main__":
     loaded_emr = load_records("patients_50.json")

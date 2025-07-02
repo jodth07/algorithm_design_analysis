@@ -3,9 +3,10 @@ from dataclasses import dataclass
 
 from abc import ABC, abstractmethod
 
+
 class MarketplaceItemsInterface(ABC):
     @abstractmethod
-    def __init__(self, items: list[dict] | list['MarketplaceItem']):
+    def __init__(self, items: list[dict] | list["MarketplaceItem"]):
         """
         Initialize MarketplaceItems from a list of dictionaries or MarketplaceItem objects.
 
@@ -14,12 +15,12 @@ class MarketplaceItemsInterface(ABC):
         pass
 
     @abstractmethod
-    def available_items(self) -> list['MarketplaceItem']:
+    def available_items(self) -> list["MarketplaceItem"]:
         """Return a list of items that are available."""
         pass
 
     @abstractmethod
-    def find_one_by_name(self, name: str) -> list['MarketplaceItem'] :
+    def find_one_by_name(self, name: str) -> list["MarketplaceItem"]:
         """
         Find a single item by name
 
@@ -29,7 +30,7 @@ class MarketplaceItemsInterface(ABC):
         pass
 
     @abstractmethod
-    def fuzzy_find_by_name(self, name: str) -> list['MarketplaceItem']:
+    def fuzzy_find_by_name(self, name: str) -> list["MarketplaceItem"]:
         """
         Find items by name if substrings are found in name
 
@@ -39,7 +40,7 @@ class MarketplaceItemsInterface(ABC):
         pass
 
     @abstractmethod
-    def find_by_name(self, name: str) -> list['MarketplaceItem']:
+    def find_by_name(self, name: str) -> list["MarketplaceItem"]:
         """
         Find items by name
 
@@ -54,7 +55,7 @@ class MarketplaceItemsInterface(ABC):
         pass
 
     @abstractmethod
-    def filter_by(self, key: str, value: str | int) -> 'MarketplaceItems':
+    def filter_by(self, key: str, value: str | int) -> "MarketplaceItems":
         """
         Filter marketplace items by a specific key and value.
 
@@ -74,6 +75,7 @@ class MarketplaceItemsInterface(ABC):
         """Make MarketplaceItems iterable."""
         pass
 
+
 @dataclass(frozen=False)
 class MarketplaceItem:
     id: int
@@ -89,6 +91,7 @@ class MarketplaceItem:
     def __repr__(self):
         return f"MarketplaceItem(name={self.name}, color={self.color}, storage_gb={self.storage_gb}, condition={self.condition}, price={self.price})"
 
+
 class MarketplaceItems(MarketplaceItemsInterface):
     items: list[MarketplaceItem]
 
@@ -103,15 +106,17 @@ class MarketplaceItems(MarketplaceItemsInterface):
         elif all(isinstance(item, MarketplaceItem) for item in items):
             object_items = items
         else:
-            raise TypeError("Items must be a list of dictionaries or MarketplaceItem objects.")
+            raise TypeError(
+                "Items must be a list of dictionaries or MarketplaceItem objects."
+            )
 
-        object.__setattr__(self, 'items', object_items)
+        object.__setattr__(self, "items", object_items)
 
-    def available_items(self) -> list['MarketplaceItem']:
+    def available_items(self) -> list["MarketplaceItem"]:
         """Return a list of items that are available."""
         return [item for item in self.items if item.is_available]
 
-    def find_one_by_name(self, name: str) -> list['MarketplaceItem']:
+    def find_one_by_name(self, name: str) -> list["MarketplaceItem"]:
         """
         Find a single item by name
 
@@ -120,14 +125,18 @@ class MarketplaceItems(MarketplaceItemsInterface):
         """
         return [item for item in self.items if item.name.lower() == name.lower()]
 
-    def fuzzy_find_by_name(self, name: str) -> list['MarketplaceItem']:
+    def fuzzy_find_by_name(self, name: str) -> list["MarketplaceItem"]:
         """
         Find items by name if substrings are found in name
 
         :param name: The name of the item to search for.
         :return: A list of MarketplaceItem objects that match the name.
         """
-        return [item for item in self.items if all(letter in item.name.lower() for letter in set(name.lower()))]
+        return [
+            item
+            for item in self.items
+            if all(letter in item.name.lower() for letter in set(name.lower()))
+        ]
 
     def find_by_name(self, name: str) -> list[MarketplaceItem]:
         """
@@ -142,7 +151,7 @@ class MarketplaceItems(MarketplaceItemsInterface):
         """Calculate the total quantity of items in stock."""
         return sum(item.in_stock_quantity for item in self.items if item.is_in_stock)
 
-    def filter_by(self, key: str, value: str | int) -> 'MarketplaceItems':
+    def filter_by(self, key: str, value: str | int) -> "MarketplaceItems":
         """
         Filter marketplace items by a specific key and value.
 
@@ -150,13 +159,17 @@ class MarketplaceItems(MarketplaceItemsInterface):
         :param value: The value to match against the specified key.
         :return: A list of MarketplaceItem objects that match the filter criteria.
         """
-        range_filters = ['storage_gb', 'price']
-        exact_filter_keys = ['color',  'condition']
+        range_filters = ["storage_gb", "price"]
+        exact_filter_keys = ["color", "condition"]
         all_filter_keys = range_filters + exact_filter_keys
         if key not in all_filter_keys:
-            raise ValueError(f"Invalid key: {key}. Available keys are: {', '.join(all_filter_keys)}")
-        
-        return MarketplaceItems([item for item in self.available_items() if getattr(item, key) == value])
+            raise ValueError(
+                f"Invalid key: {key}. Available keys are: {', '.join(all_filter_keys)}"
+            )
+
+        return MarketplaceItems(
+            [item for item in self.available_items() if getattr(item, key) == value]
+        )
 
     def __len__(self) -> int:
         return len(self.items)
@@ -165,7 +178,8 @@ class MarketplaceItems(MarketplaceItemsInterface):
         """Make MarketplaceItems iterable."""
         return iter(self.items)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     market_place = [
         {
             "id": 1,
@@ -176,7 +190,7 @@ if __name__ == '__main__':
             "price": 1599.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 50
+            "in_stock_quantity": 50,
         },
         {
             "id": 2,
@@ -187,7 +201,7 @@ if __name__ == '__main__':
             "price": 1399.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 75
+            "in_stock_quantity": 75,
         },
         {
             "id": 3,
@@ -198,7 +212,7 @@ if __name__ == '__main__':
             "price": 1099.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 120
+            "in_stock_quantity": 120,
         },
         {
             "id": 4,
@@ -209,7 +223,7 @@ if __name__ == '__main__':
             "price": 999.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 100
+            "in_stock_quantity": 100,
         },
         {
             "id": 5,
@@ -220,7 +234,7 @@ if __name__ == '__main__':
             "price": 899.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 90
+            "in_stock_quantity": 90,
         },
         {
             "id": 6,
@@ -231,7 +245,7 @@ if __name__ == '__main__':
             "price": 799.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 130
+            "in_stock_quantity": 130,
         },
         {
             "id": 7,
@@ -242,7 +256,7 @@ if __name__ == '__main__':
             "price": 429.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 80
+            "in_stock_quantity": 80,
         },
         {
             "id": 8,
@@ -253,7 +267,7 @@ if __name__ == '__main__':
             "price": 1399.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 40
+            "in_stock_quantity": 40,
         },
         {
             "id": 9,
@@ -264,7 +278,7 @@ if __name__ == '__main__':
             "price": 1299.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 60
+            "in_stock_quantity": 60,
         },
         {
             "id": 10,
@@ -275,7 +289,7 @@ if __name__ == '__main__':
             "price": 999.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 100
+            "in_stock_quantity": 100,
         },
         {
             "id": 11,
@@ -286,7 +300,7 @@ if __name__ == '__main__':
             "price": 799.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 110
+            "in_stock_quantity": 110,
         },
         {
             "id": 12,
@@ -297,7 +311,7 @@ if __name__ == '__main__':
             "price": 899.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 70
+            "in_stock_quantity": 70,
         },
         {
             "id": 13,
@@ -308,7 +322,7 @@ if __name__ == '__main__':
             "price": 650.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 15
+            "in_stock_quantity": 15,
         },
         {
             "id": 14,
@@ -319,7 +333,7 @@ if __name__ == '__main__':
             "price": 350.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 25
+            "in_stock_quantity": 25,
         },
         {
             "id": 15,
@@ -330,7 +344,7 @@ if __name__ == '__main__':
             "price": 329.99,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 50
+            "in_stock_quantity": 50,
         },
         {
             "id": 16,
@@ -341,7 +355,7 @@ if __name__ == '__main__':
             "price": 550.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 10
+            "in_stock_quantity": 10,
         },
         {
             "id": 17,
@@ -352,7 +366,7 @@ if __name__ == '__main__':
             "price": 220.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 18
+            "in_stock_quantity": 18,
         },
         {
             "id": 18,
@@ -363,7 +377,7 @@ if __name__ == '__main__':
             "price": 400.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 12
+            "in_stock_quantity": 12,
         },
         {
             "id": 19,
@@ -374,7 +388,7 @@ if __name__ == '__main__':
             "price": 250.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 30
+            "in_stock_quantity": 30,
         },
         {
             "id": 20,
@@ -385,7 +399,7 @@ if __name__ == '__main__':
             "price": 300.00,
             "is_in_stock": True,
             "is_available": False,
-            "in_stock_quantity": 8
+            "in_stock_quantity": 8,
         },
         {
             "id": 21,
@@ -396,7 +410,7 @@ if __name__ == '__main__':
             "price": 180.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 22
+            "in_stock_quantity": 22,
         },
         {
             "id": 22,
@@ -407,7 +421,7 @@ if __name__ == '__main__':
             "price": 150.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 17
+            "in_stock_quantity": 17,
         },
         {
             "id": 23,
@@ -418,7 +432,7 @@ if __name__ == '__main__':
             "price": 280.00,
             "is_in_stock": True,
             "is_available": False,
-            "in_stock_quantity": 5
+            "in_stock_quantity": 5,
         },
         {
             "id": 24,
@@ -429,7 +443,7 @@ if __name__ == '__main__':
             "price": 130.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 14
+            "in_stock_quantity": 14,
         },
         {
             "id": 25,
@@ -440,7 +454,7 @@ if __name__ == '__main__':
             "price": 120.00,
             "is_in_stock": True,
             "is_available": False,
-            "in_stock_quantity": 9
+            "in_stock_quantity": 9,
         },
         {
             "id": 26,
@@ -451,7 +465,7 @@ if __name__ == '__main__':
             "price": 60.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 20
+            "in_stock_quantity": 20,
         },
         {
             "id": 27,
@@ -462,7 +476,7 @@ if __name__ == '__main__':
             "price": 70.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 11
+            "in_stock_quantity": 11,
         },
         {
             "id": 28,
@@ -473,7 +487,7 @@ if __name__ == '__main__':
             "price": 50.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 28
+            "in_stock_quantity": 28,
         },
         {
             "id": 29,
@@ -484,7 +498,7 @@ if __name__ == '__main__':
             "price": 40.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 16
+            "in_stock_quantity": 16,
         },
         {
             "id": 30,
@@ -495,7 +509,7 @@ if __name__ == '__main__':
             "price": 30.00,
             "is_in_stock": True,
             "is_available": True,
-            "in_stock_quantity": 13
+            "in_stock_quantity": 13,
         },
         {
             "id": 31,
@@ -506,7 +520,7 @@ if __name__ == '__main__':
             "price": 40.00,
             "is_in_stock": True,
             "is_available": False,
-            "in_stock_quantity": 7
+            "in_stock_quantity": 7,
         },
         {
             "id": 32,
@@ -517,7 +531,7 @@ if __name__ == '__main__':
             "price": 35.00,
             "is_in_stock": True,
             "is_available": False,
-            "in_stock_quantity": 5
+            "in_stock_quantity": 5,
         },
         {
             "id": 33,
@@ -528,7 +542,7 @@ if __name__ == '__main__':
             "price": 30.00,
             "is_in_stock": True,
             "is_available": False,
-            "in_stock_quantity": 6
+            "in_stock_quantity": 6,
         },
         {
             "id": 34,
@@ -539,7 +553,7 @@ if __name__ == '__main__':
             "price": 25.00,
             "is_in_stock": False,
             "is_available": False,
-            "in_stock_quantity": 0
+            "in_stock_quantity": 0,
         },
         {
             "id": 35,
@@ -550,19 +564,18 @@ if __name__ == '__main__':
             "price": 15000.00,
             "is_in_stock": True,
             "is_available": False,
-            "in_stock_quantity": 1
-        }
+            "in_stock_quantity": 1,
+        },
     ]
     msp = MarketplaceItems([MarketplaceItem(**item) for item in market_place])
 
     print(f"total distinct items in marketplace: {len(msp)}")
     print(f"total items in stock: {msp.total_in_stock_quantity()}")
 
-    filtered = msp.filter_by('color', 'Pink')
+    filtered = msp.filter_by("color", "Pink")
     print(f"total items in filtered marketplace: {len(filtered)}")
 
-    found_items = filtered.fuzzy_find_by_name('iPhone 15')
+    found_items = filtered.fuzzy_find_by_name("iPhone 15")
     print(f"total distinct items in filtered products: {len(found_items)}")
 
     pprint.pprint(found_items)
-

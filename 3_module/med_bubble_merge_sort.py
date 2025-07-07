@@ -11,23 +11,29 @@ import requests
 import json
 from abc import ABC, abstractmethod
 
+DATA_URL = "https://raw.githubusercontent.com/jodth07/algorithm_design_analysis/refs/heads/develop/resources/data"
+
 
 class BaseDataUtil(ABC):
     def __init__(self):
         self.json_data = None
 
     @abstractmethod
-    def download_from_url(self, url: str):
+    def download_from_url(
+        self, url: str, is_json: bool = True, is_csv: bool = False
+    ) -> json:
         pass
 
     @abstractmethod
-    def save_to_file(self, url: str, filepath: str):
+    def download_to_file(self, base_url: str, filepath: str) -> json:
         pass
 
 
 class DataUtil(BaseDataUtil):
 
-    def download_from_url(self, url: str, is_json: bool = True, is_csv: bool = False):
+    def download_from_url(
+        self, url: str, is_json: bool = True, is_csv: bool = False
+    ) -> json:
         """Download data file from URL and store in memory."""
         response = requests.get(url)
         response.raise_for_status()
@@ -35,8 +41,9 @@ class DataUtil(BaseDataUtil):
             self.json_data = response.json()
         if is_csv:
             raise NotImplementedError("This method must be implemented by subclasses.")
+        return self.json_data
 
-    def save_to_file(self, base_url: str, filepath: str) -> json:
+    def download_to_file(self, base_url: str, filepath: str) -> json:
         """Save in-memory data to file, or download if not already loaded."""
         if self.json_data is None:
             print("Data not in memory. Downloading...")
@@ -83,6 +90,15 @@ class Patient:
             other.patient_id,
         )
 
+    def __gt__(self, other):
+        if not isinstance(other, Patient):
+            return NotImplemented
+        return (self.name.last_name, self.name.first_name, self.patient_id) > (
+            other.name.last_name,
+            other.name.first_name,
+            other.patient_id,
+        )
+
 
 class EMRSystem(ABC):
     def __init__(self):
@@ -94,7 +110,15 @@ class EMRSystem(ABC):
         pass
 
     @abstractmethod
-    def list_records(self) -> List[Patient]:
+    def add_records(self, patients: List[Patient]) -> "HospitalEMRSystem":
+        pass
+
+    @abstractmethod
+    def list_records(self, original: bool = False) -> List[Patient]:
+        pass
+
+    @abstractmethod
+    def revert(self) -> "HospitalEMRSystem":
         pass
 
     @abstractmethod
@@ -103,10 +127,6 @@ class EMRSystem(ABC):
 
     @abstractmethod
     def merge_sort_records(self, field: str) -> "HospitalEMRSystem":
-        pass
-
-    @abstractmethod
-    def revert(self) -> "HospitalEMRSystem":
         pass
 
     @abstractmethod
@@ -123,6 +143,23 @@ class HospitalEMRSystem(EMRSystem):
         for attribute in attributes:
             current_value = getattr(current_value, attribute)
         return current_value
+
+    @staticmethod
+    def json_to_patients(json_data: dict) -> List[Patient]:
+        """Parse in-memory JSON to Patient objects or load from file."""
+
+        patients = []
+        for item in json_data:
+            name = Name(**item["name"])
+            dob = datetime.fromisoformat(item["date_of_birth"]).date()
+            patient = Patient(
+                patient_id=item["patient_id"],
+                name=name,
+                gender=item["gender"],
+                date_of_birth=dob,
+            )
+            patients.append(patient)
+        return patients
 
     def add_record(self, patient: Patient) -> "HospitalEMRSystem":
         self.add_records([patient])
@@ -184,23 +221,6 @@ class HospitalEMRSystem(EMRSystem):
         self.records = merge_sort(self.records)
         return self
 
-    @staticmethod
-    def json_to_patients(json_data: dict = None) -> List[Patient]:
-        """Parse in-memory JSON to Patient objects or load from file."""
-
-        patients = []
-        for item in json_data:
-            name = Name(**item["name"])
-            dob = datetime.fromisoformat(item["date_of_birth"]).date()
-            patient = Patient(
-                patient_id=item["patient_id"],
-                name=name,
-                gender=item["gender"],
-                date_of_birth=dob,
-            )
-            patients.append(patient)
-        return patients
-
     def load_from_json_file(self, filepath: str) -> List[Patient]:
         """Load data from file."""
         with open(filepath, "r") as f:
@@ -214,11 +234,9 @@ def load_records(records_path):
 
     util = DataUtil()
     emr = HospitalEMRSystem()
-    base_url = "https://raw.githubusercontent.com/jodth07/algorithm_design_analysis/refs/heads/develop/resources/data"
 
     if not os.path.exists(f"target/{records_path}"):
-        print(f"File target/{records_path} does not exist.")
-        json_data = util.download_from_url(f"{base_url}/{records_path}")
+        json_data = util.download_to_file(base_url=DATA_URL, filepath=records_path)
         emr.add_records(emr.json_to_patients(json_data))
     else:
         emr.load_from_json_file(f"target/{records_path}")
@@ -231,8 +249,6 @@ def benchmark_bbs(emr) -> float:
     start_time = time.perf_counter()
     emr.bubble_sort_records("name.last_name")
     end_time = time.perf_counter()
-    print(f"Bubble Sort start time:{start_time}")
-    print(f"Bubble Sort end time:{end_time}")
     return end_time - start_time
 
 
@@ -241,8 +257,6 @@ def benchmark_ms(emr) -> float:
     start_time = time.perf_counter()
     emr.merge_sort_records("name.last_name")
     end_time = time.perf_counter()
-    print(f"Merge Sort start time:{start_time}")
-    print(f"Merge Sort end time:{end_time}")
     return end_time - start_time
 
 
@@ -252,15 +266,15 @@ def run_benchmarking(file):
     bubble_time = benchmark_bbs(loaded_emr)
     print(f"Bubble Sort took {bubble_time:.6f} seconds")
 
-    print([p.name.last_name for p in loaded_emr.list_records()][:10])
+    # print([p.name.last_name for p in loaded_emr.list_records()][:10])
 
     loaded_emr.revert()
     print("Revert to original Order for bench marking")
-    print([p.name.last_name for p in loaded_emr.list_records()][:10])
+    # print([p.name.last_name for p in loaded_emr.list_records()][:10])
 
     merge_time = benchmark_ms(loaded_emr)
     print(f"Merge Sort took {merge_time:.6f} seconds")
-    print([p.name.last_name for p in loaded_emr.list_records()][:10])
+    # print([p.name.last_name for p in loaded_emr.list_records()][:10])
 
 
 if __name__ == "__main__":
@@ -268,3 +282,5 @@ if __name__ == "__main__":
     run_benchmarking("patients_50.json")
     print("\nBenchmarking 100...")
     run_benchmarking("patients_100.json")
+    print("\nBenchmarking 500...")
+    run_benchmarking("patients_500.json")

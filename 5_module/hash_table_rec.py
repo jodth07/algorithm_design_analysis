@@ -31,7 +31,7 @@ class AbstractHashTable(ABC):
     @staticmethod
     def binary_hash(embedding: np.ndarray, projection_matrix: np.ndarray) -> str:
         projection = np.dot(embedding, projection_matrix)
-        return ''.join('1' if val >= 0 else '0' for val in projection)
+        return "".join("1" if val >= 0 else "0" for val in projection)
 
     @staticmethod
     def hamming_distance(hash1: str, hash2: str) -> int:
@@ -73,7 +73,7 @@ class HashTable(AbstractHashTable):
 
     def recommend_by_hash(self, user_hash: str) -> Optional[Any]:
         closest_match = None
-        smallest_distance = float('inf')
+        smallest_distance = float("inf")
         for bucket in self.table:
             for content_hash, content in bucket:
                 distance = self.hamming_distance(user_hash, content_hash)

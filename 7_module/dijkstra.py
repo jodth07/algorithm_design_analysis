@@ -1,7 +1,8 @@
 import heapq
 
+
 def dijkstra(graph, start_name, end_name):
-    distances = {node.name: float('inf') for node in graph.nodes.values()}
+    distances = {node.name: float("inf") for node in graph.nodes.values()}
     previous = {node.name: None for node in graph.nodes.values()}
     distances[start_name] = 0
 

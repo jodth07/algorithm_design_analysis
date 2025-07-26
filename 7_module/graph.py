@@ -17,6 +17,7 @@ class INode(ABC):
         """String representation of the node."""
         pass
 
+
 class Node(INode):
     def __init__(self, name, latitude=None, longitude=None):
         self.name = name
@@ -57,7 +58,9 @@ class Graph:
             self.nodes[name] = Node(name, latitude, longitude)
         return self.nodes[name]
 
-    def add_edge(self, from_name, to_name, base_weight, from_coords=None, to_coords=None):
+    def add_edge(
+        self, from_name, to_name, base_weight, from_coords=None, to_coords=None
+    ):
         """Add an edge, optionally adding coordinates for both nodes."""
         from_lat, from_lon = from_coords if from_coords else (None, None)
         to_lat, to_lon = to_coords if to_coords else (None, None)

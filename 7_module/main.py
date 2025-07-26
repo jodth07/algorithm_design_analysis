@@ -22,16 +22,18 @@ ROADS = [
     ("B", "Customer"),
 ]
 
+
 def main():
     graph = Graph()
 
     # Add edges with dummy weights
     for from_loc, to_loc in ROADS:
         graph.add_edge(
-            from_loc, to_loc,
+            from_loc,
+            to_loc,
             base_weight=1,
             from_coords=LOCATIONS[from_loc],
-            to_coords=LOCATIONS[to_loc]
+            to_coords=LOCATIONS[to_loc],
         )
 
     print("🚗 Getting real-time traffic data from TomTom...")
@@ -41,6 +43,7 @@ def main():
 
     print(f"\n📦 Best Route: {' -> '.join(path)}")
     print(f"⏱ ETA with traffic: {cost:.2f} minutes\n")
+
 
 if __name__ == "__main__":
     main()

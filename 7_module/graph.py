@@ -1,24 +1,5 @@
-from abc import ABC, abstractmethod
 
-
-class INode(ABC):
-    @abstractmethod
-    def is_leaf(self):
-        """Check if the node is a leaf (no outgoing edges)."""
-        pass
-
-    @abstractmethod
-    def neighbors(self):
-        """Return a list of neighboring nodes and their weights."""
-        pass
-
-    @abstractmethod
-    def __repr__(self):
-        """String representation of the node."""
-        pass
-
-
-class Node(INode):
+class Node:
     def __init__(self, name, latitude=None, longitude=None):
         self.name = name
         self.latitude = latitude

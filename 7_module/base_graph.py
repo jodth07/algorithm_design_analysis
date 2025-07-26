@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from nodes import Node
 from edges import Edge
 
+
 class AbstractGraph(ABC):
     @abstractmethod
     def add_edge(self, from_name, to_name, base_weight, from_coords, to_coords):

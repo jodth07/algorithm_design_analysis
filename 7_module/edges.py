@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class AbstractEdge(ABC):
     @abstractmethod
     def get_weight(self):

@@ -1,4 +1,3 @@
-
 class Node:
     def __init__(self, name, latitude=None, longitude=None):
         self.name = name

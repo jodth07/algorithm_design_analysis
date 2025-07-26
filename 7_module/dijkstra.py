@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import heapq
 
+
 class RoutingAlgorithm(ABC):
     @abstractmethod
     def run(self, graph, start_name, end_name):

@@ -38,6 +38,7 @@ ROADS = [
     ("B", "Customer10"),
 ]
 
+
 def main():
     graph = DeliveryGraph()
 
@@ -59,6 +60,7 @@ def main():
         target = f"Customer{i}"
         cost, path = graph.run_algorithm(dijkstra, "Warehouse", target)
         print(f"🛵 Delivery {i}: {' -> '.join(path)} | ETA: {cost:.2f} min")
+
 
 if __name__ == "__main__":
     main()

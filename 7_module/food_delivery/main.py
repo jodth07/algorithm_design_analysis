@@ -6,7 +6,9 @@ from core.location import Address, Coordinate
 from visualize.map_generator import generate_map
 
 from dotenv import load_dotenv
+
 load_dotenv(verbose=True)
+
 
 def main():
     # Load updated JSON
@@ -19,7 +21,9 @@ def main():
     warehouse_data = data["warehouse"]
     warehouse_address = Address(**warehouse_data["address"])
     warehouse_coord = Coordinate(warehouse_data["lat"], warehouse_data["lon"])
-    warehouse_node = NodeWithAddress(warehouse_data["name"], warehouse_address, warehouse_coord)
+    warehouse_node = NodeWithAddress(
+        warehouse_data["name"], warehouse_address, warehouse_coord
+    )
     graph.add_node(warehouse_node)
 
     # Create delivery nodes
@@ -39,7 +43,6 @@ def main():
     for edge in graph.get_all_edges():
         print(f"{edge.u_node.name} -> {edge.v_node.name} | weight: {edge.weight}")
 
-
     # All nodes (including warehouse and deliveries)
     all_nodes = [warehouse_node] + list(delivery_nodes.values())
     edges = graph.get_all_edges()
@@ -53,6 +56,7 @@ def main():
         print(f"\nDelivery to {name}:")
         print(f"Path: {' -> '.join(path)}")
         print(f"ETA: {cost:.2f} units")
+
 
 if __name__ == "__main__":
     main()

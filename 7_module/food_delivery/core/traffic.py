@@ -4,6 +4,7 @@ import json
 import requests
 
 from dotenv import load_dotenv
+
 load_dotenv(verbose=True)
 
 TOMTOM_API_KEY = os.getenv("TOMTOM_API_KEY")

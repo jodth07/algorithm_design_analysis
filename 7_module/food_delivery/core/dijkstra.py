@@ -25,7 +25,9 @@ class DijkstraAlgorithm(RoutingAlgorithm):
 
             for neighbor_name, travel_time in graph.get_neighbors(current_node):
                 new_dist = current_dist + travel_time
-                print(f"Checking neighbor {neighbor_name} with travel time {travel_time} from {current_node}. Current distance: {current_dist}, New distance: {new_dist}")
+                print(
+                    f"Checking neighbor {neighbor_name} with travel time {travel_time} from {current_node}. Current distance: {current_dist}, New distance: {new_dist}"
+                )
                 if new_dist < distances[neighbor_name]:
                     distances[neighbor_name] = new_dist
                     previous[neighbor_name] = current_node
@@ -39,6 +41,8 @@ class DijkstraAlgorithm(RoutingAlgorithm):
             node = previous[node]
 
         print(f"The shortest path from {start_name} to {end_name} is {path}")
-        print(f"The distances path from {start_name} to {end_name} is {distances[end_name]}")
+        print(
+            f"The distances path from {start_name} to {end_name} is {distances[end_name]}"
+        )
 
         return distances[end_name], path

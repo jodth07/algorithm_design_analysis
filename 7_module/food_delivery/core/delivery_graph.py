@@ -2,11 +2,12 @@ from core.base_graph import AbstractGraph
 from core.node_base import Node
 from core.edge_with_traffic import EdgeWithTraffic
 
+
 class DeliveryGraph(AbstractGraph):
     def __init__(self):
         self.nodes = {}
 
-    def add_node(self, node: Node) -> 'DeliveryGraph':
+    def add_node(self, node: Node) -> "DeliveryGraph":
         if node.name not in self.nodes:
             self.nodes[node.name] = node
         return self

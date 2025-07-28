@@ -3,9 +3,10 @@ from core.location import Coordinate, Address
 from core.edge_base import Edge
 from typing import Set
 
+
 class Node(ABC):
     _address: Address = None
-    _neighbors: Set['Node'] = []
+    _neighbors: Set["Node"] = []
     _coord: Coordinate = None
     _edges: Set[Edge] = set()
 
@@ -22,7 +23,7 @@ class Node(ABC):
     def coords(self) -> Coordinate: ...
 
     @abstractmethod
-    def add_neighbor(self, neighbor: 'Node') -> None: ...
+    def add_neighbor(self, neighbor: "Node") -> None: ...
 
     @abstractmethod
     def get_neighbors(self) -> Set["Node"]: ...

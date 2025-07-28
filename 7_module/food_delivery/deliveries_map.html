@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5aa921db45074cd18887e3c4b790ac57 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_5aa921db45074cd18887e3c4b790ac57" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5aa921db45074cd18887e3c4b790ac57 = L.map(
+                "map_5aa921db45074cd18887e3c4b790ac57",
+                {
+                    center: [26.1224, -80.1373],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_98a20176aac724c87387e85e44b92588 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_98a20176aac724c87387e85e44b92588.addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var marker_f6372e4da0efeab40a4d5ac6084b4030 = L.marker(
+                [26.1224, -80.1373],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_685a903b292b81a85b4a9409d2b1ae44 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_f6372e4da0efeab40a4d5ac6084b4030.bindTooltip(
+                `<div>
+                     Warehouse
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f6372e4da0efeab40a4d5ac6084b4030.setIcon(icon_685a903b292b81a85b4a9409d2b1ae44);
+            
+    
+            var marker_1f29536fbd4b8a683ef2ef36eeef6f72 = L.marker(
+                [26.127, -80.248],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_63f2fc478734078f60f65f26900c5aaf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_1f29536fbd4b8a683ef2ef36eeef6f72.bindTooltip(
+                `<div>
+                     Plantation Pizza
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1f29536fbd4b8a683ef2ef36eeef6f72.setIcon(icon_63f2fc478734078f60f65f26900c5aaf);
+            
+    
+            var marker_abad7b68c4d3c8233b416fbd98376a0b = L.marker(
+                [26.128, -80.247],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_f2bd60a9fdbe3cc0b23121d0f69e935c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_abad7b68c4d3c8233b416fbd98376a0b.bindTooltip(
+                `<div>
+                     Plantation Bites
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_abad7b68c4d3c8233b416fbd98376a0b.setIcon(icon_f2bd60a9fdbe3cc0b23121d0f69e935c);
+            
+    
+            var marker_637832954ed821dac679d2787326342a = L.marker(
+                [26.129, -80.246],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_93a69e2d830dcb27ddff82cd97b192de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_637832954ed821dac679d2787326342a.bindTooltip(
+                `<div>
+                     The Plantation Deli
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_637832954ed821dac679d2787326342a.setIcon(icon_93a69e2d830dcb27ddff82cd97b192de);
+            
+    
+            var marker_81559f5f97be8f8451f8be5cdb93ec33 = L.marker(
+                [26.153, -80.28],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_d35324d33eef20d90c65691519bbde3c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_81559f5f97be8f8451f8be5cdb93ec33.bindTooltip(
+                `<div>
+                     Sunrise Sushi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_81559f5f97be8f8451f8be5cdb93ec33.setIcon(icon_d35324d33eef20d90c65691519bbde3c);
+            
+    
+            var marker_91f566fc99562f227c35cb0c1ca209b4 = L.marker(
+                [26.154, -80.279],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_f91dada341362f085a7a150d3c087930 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_91f566fc99562f227c35cb0c1ca209b4.bindTooltip(
+                `<div>
+                     Sunrise Tacos
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_91f566fc99562f227c35cb0c1ca209b4.setIcon(icon_f91dada341362f085a7a150d3c087930);
+            
+    
+            var marker_33809455f295fcb374e00d3e9283b3ea = L.marker(
+                [26.155, -80.278],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_3c2f9bd9fb0e52fb0324a5aef54db724 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_33809455f295fcb374e00d3e9283b3ea.bindTooltip(
+                `<div>
+                     Sunrise Café
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_33809455f295fcb374e00d3e9283b3ea.setIcon(icon_3c2f9bd9fb0e52fb0324a5aef54db724);
+            
+    
+            var marker_ef2de48cc514148009bf8dd54b36160a = L.marker(
+                [26.141, -80.224],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_c259d183d017cf3c3392cdfcb660ee84 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ef2de48cc514148009bf8dd54b36160a.bindTooltip(
+                `<div>
+                     Lauderhill Grill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ef2de48cc514148009bf8dd54b36160a.setIcon(icon_c259d183d017cf3c3392cdfcb660ee84);
+            
+    
+            var marker_3c7756e54a21c68059b6d950dbd1a023 = L.marker(
+                [26.142, -80.223],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_34b2ccc031a25c16f2aa61f924e0406e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_3c7756e54a21c68059b6d950dbd1a023.bindTooltip(
+                `<div>
+                     Lauderhill Wraps
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3c7756e54a21c68059b6d950dbd1a023.setIcon(icon_34b2ccc031a25c16f2aa61f924e0406e);
+            
+    
+            var marker_9d271bb8d57b1887f4c6d198c0a9b58c = L.marker(
+                [26.16, -80.215],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_6a5a7c4d8c2f5e0a0391645aa774027d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_9d271bb8d57b1887f4c6d198c0a9b58c.bindTooltip(
+                `<div>
+                     Lauderlake BBQ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9d271bb8d57b1887f4c6d198c0a9b58c.setIcon(icon_6a5a7c4d8c2f5e0a0391645aa774027d);
+            
+    
+            var marker_658734d489867b337e4483b3e373497f = L.marker(
+                [26.161, -80.214],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_0dafe0fda618a80029d0ae3dd9fb21f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_658734d489867b337e4483b3e373497f.bindTooltip(
+                `<div>
+                     Lauderlake Smoothies
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_658734d489867b337e4483b3e373497f.setIcon(icon_0dafe0fda618a80029d0ae3dd9fb21f8);
+            
+    
+            var marker_780f9541ec53f06fef0ac762a5fecd3c = L.marker(
+                [26.148, -80.285],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_50d869673a82315c8c7191edc74a330b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_780f9541ec53f06fef0ac762a5fecd3c.bindTooltip(
+                `<div>
+                     Pine Island Pizzeria
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_780f9541ec53f06fef0ac762a5fecd3c.setIcon(icon_50d869673a82315c8c7191edc74a330b);
+            
+    
+            var marker_154859ad8c3380984572f218dc9a1938 = L.marker(
+                [26.149, -80.284],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_3a85de7aac881f22f2f73665015240a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_154859ad8c3380984572f218dc9a1938.bindTooltip(
+                `<div>
+                     Pine Island Burgers
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_154859ad8c3380984572f218dc9a1938.setIcon(icon_3a85de7aac881f22f2f73665015240a9);
+            
+    
+            var marker_061231dcfba38e698d36c0103827d2d9 = L.marker(
+                [26.051, -80.276],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_49a0a9bdd4a6fc4f58ae40676e5e975d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_061231dcfba38e698d36c0103827d2d9.bindTooltip(
+                `<div>
+                     Cooper Coffee
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_061231dcfba38e698d36c0103827d2d9.setIcon(icon_49a0a9bdd4a6fc4f58ae40676e5e975d);
+            
+    
+            var marker_4a72c08d3a8f84d05f14f6a2a09fd271 = L.marker(
+                [26.052, -80.275],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_e3bc58d0b725dc72391a2a9a418d2c84 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_4a72c08d3a8f84d05f14f6a2a09fd271.bindTooltip(
+                `<div>
+                     Cooper Donuts
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4a72c08d3a8f84d05f14f6a2a09fd271.setIcon(icon_e3bc58d0b725dc72391a2a9a418d2c84);
+            
+    
+            var marker_2664be06103f8014c51a42fa004435ab = L.marker(
+                [26.053, -80.274],
+                {
+}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            var icon_7b7fa7c02716b93df15a8a96d4b903e9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_2664be06103f8014c51a42fa004435ab.bindTooltip(
+                `<div>
+                     Cooper Kitchen
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2664be06103f8014c51a42fa004435ab.setIcon(icon_7b7fa7c02716b93df15a8a96d4b903e9);
+            
+    
+            var poly_line_9de46d3584255547ef0a33fea3cd5037 = L.polyline(
+                [[26.1224, -80.1373], [26.142, -80.223]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_9de46d3584255547ef0a33fea3cd5037.bindTooltip(
+                `<div>
+                     Warehouse -> Lauderhill Wraps (15.32 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ab2e02395be324816cfaaf254d983192 = L.polyline(
+                [[26.052, -80.275], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_ab2e02395be324816cfaaf254d983192.bindTooltip(
+                `<div>
+                     Cooper Donuts -> Warehouse (24.18 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ec5b1efd9f5f496ad2f37c3ee8e40fa7 = L.polyline(
+                [[26.161, -80.214], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_ec5b1efd9f5f496ad2f37c3ee8e40fa7.bindTooltip(
+                `<div>
+                     Lauderlake Smoothies -> Warehouse (19.90 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e485c515769e66544e1b4b6a000bb230 = L.polyline(
+                [[26.051, -80.276], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_e485c515769e66544e1b4b6a000bb230.bindTooltip(
+                `<div>
+                     Cooper Coffee -> Warehouse (23.97 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_94720a557877292db08affa207c9dc0b = L.polyline(
+                [[26.1224, -80.1373], [26.129, -80.246]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_94720a557877292db08affa207c9dc0b.bindTooltip(
+                `<div>
+                     Warehouse -> The Plantation Deli (17.72 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_69641e55c79f1a6c15f172f8bf9bb507 = L.polyline(
+                [[26.1224, -80.1373], [26.127, -80.248]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_69641e55c79f1a6c15f172f8bf9bb507.bindTooltip(
+                `<div>
+                     Warehouse -> Plantation Pizza (18.28 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_eda0c442de5bc8c156c213f68684e0bd = L.polyline(
+                [[26.141, -80.224], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_eda0c442de5bc8c156c213f68684e0bd.bindTooltip(
+                `<div>
+                     Lauderhill Grill -> Warehouse (16.88 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ab809a8b3610aa7f559f3114b288b646 = L.polyline(
+                [[26.1224, -80.1373], [26.128, -80.247]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_ab809a8b3610aa7f559f3114b288b646.bindTooltip(
+                `<div>
+                     Warehouse -> Plantation Bites (17.60 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_7d50beb3ec9139973304f92a53d3b5c4 = L.polyline(
+                [[26.1224, -80.1373], [26.16, -80.215]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_7d50beb3ec9139973304f92a53d3b5c4.bindTooltip(
+                `<div>
+                     Warehouse -> Lauderlake BBQ (20.88 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_c07f481dcd851b39d021c94d73617adc = L.polyline(
+                [[26.148, -80.285], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_c07f481dcd851b39d021c94d73617adc.bindTooltip(
+                `<div>
+                     Pine Island Pizzeria -> Warehouse (23.48 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0b87c3422176ba0388a3aac534fa5645 = L.polyline(
+                [[26.154, -80.279], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_0b87c3422176ba0388a3aac534fa5645.bindTooltip(
+                `<div>
+                     Sunrise Tacos -> Warehouse (24.52 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a699ceb8869d7380463a5aa9e3321768 = L.polyline(
+                [[26.053, -80.274], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_a699ceb8869d7380463a5aa9e3321768.bindTooltip(
+                `<div>
+                     Cooper Kitchen -> Warehouse (24.37 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b7886c8c751c4cc6543c83236dabd815 = L.polyline(
+                [[26.1224, -80.1373], [26.153, -80.28]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_b7886c8c751c4cc6543c83236dabd815.bindTooltip(
+                `<div>
+                     Warehouse -> Sunrise Sushi (22.85 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_896e33be7d88c241a74dd56cd8bfa18d = L.polyline(
+                [[26.149, -80.284], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_896e33be7d88c241a74dd56cd8bfa18d.bindTooltip(
+                `<div>
+                     Pine Island Burgers -> Warehouse (24.43 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_5411dcd3bd901d6471e27c5caff5ce69 = L.polyline(
+                [[26.155, -80.278], [26.1224, -80.1373]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_5aa921db45074cd18887e3c4b790ac57);
+        
+    
+            poly_line_5411dcd3bd901d6471e27c5caff5ce69.bindTooltip(
+                `<div>
+                     Sunrise Café -> Warehouse (24.85 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

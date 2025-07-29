@@ -1,12 +1,14 @@
 import folium
 
+
 def generate_map_with_edges(path_nodes, output_path: str):
-    fmap = folium.Map(location=[path_nodes[0].coords.lat, path_nodes[0].coords.lon], zoom_start=11)
+    fmap = folium.Map(
+        location=[path_nodes[0].coords.lat, path_nodes[0].coords.lon], zoom_start=11
+    )
 
     for node in path_nodes:
         folium.Marker(
-            location=[node.coords.lat, node.coords.lon],
-            tooltip=node.name
+            location=[node.coords.lat, node.coords.lon], tooltip=node.name
         ).add_to(fmap)
 
     for i in range(len(path_nodes) - 1):
@@ -16,10 +18,11 @@ def generate_map_with_edges(path_nodes, output_path: str):
             locations=[[u.coords.lat, u.coords.lon], [v.coords.lat, v.coords.lon]],
             tooltip=tooltip_text,
             color="blue",
-            weight=4
+            weight=4,
         ).add_to(fmap)
 
     fmap.save(output_path)
+
 
 import folium
 from folium import plugins
@@ -34,21 +37,16 @@ def generate_map(graph, path=None, output_path="deliveries_map.html"):
     for edge in graph.get_all_edges():
         coords = [
             [edge.u_node.coords.lat, edge.u_node.coords.lon],
-            [edge.v_node.coords.lat, edge.v_node.coords.lon]
+            [edge.v_node.coords.lat, edge.v_node.coords.lon],
         ]
-        folium.PolyLine(
-            coords,
-            color="yellow",
-            weight=2.5,
-            opacity=0.7
-        ).add_to(fmap)
+        folium.PolyLine(coords, color="yellow", weight=2.5, opacity=0.7).add_to(fmap)
 
     # Plot all nodes in blue
     for node in graph.nodes.values():
         folium.Marker(
             [node.coords.lat, node.coords.lon],
             tooltip=node.name,
-            icon=folium.Icon(color="blue", icon="cutlery", prefix="fa")
+            icon=folium.Icon(color="blue", icon="cutlery", prefix="fa"),
         ).add_to(fmap)
 
     # Highlight final path (destination and segments)
@@ -58,22 +56,14 @@ def generate_map(graph, path=None, output_path="deliveries_map.html"):
         folium.Marker(
             [end_node.coords.lat, end_node.coords.lon],
             tooltip=f"Destination: {end_node.name}",
-            icon=folium.Icon(color="red", icon="flag", prefix="fa")
+            icon=folium.Icon(color="red", icon="flag", prefix="fa"),
         ).add_to(fmap)
 
         # Yellow polylines (re-plot to ensure top layer)
         for i in range(len(path) - 1):
             u = graph.get_node(path[i])
             v = graph.get_node(path[i + 1])
-            coords = [
-                [u.coords.lat, u.coords.lon],
-                [v.coords.lat, v.coords.lon]
-            ]
-            folium.PolyLine(
-                coords,
-                color="green",
-                weight=4,
-                opacity=1
-            ).add_to(fmap)
+            coords = [[u.coords.lat, u.coords.lon], [v.coords.lat, v.coords.lon]]
+            folium.PolyLine(coords, color="green", weight=4, opacity=1).add_to(fmap)
 
     fmap.save(output_path)

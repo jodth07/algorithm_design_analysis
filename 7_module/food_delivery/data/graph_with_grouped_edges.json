@@ -11,7 +11,7 @@
     "lat": 26.1224,
     "lon": -80.1373
   },
-  "deliveries": [
+  "nodes": [
     {
       "name": "Plantation Pizza",
       "address": {
@@ -22,7 +22,8 @@
         "country": "USA"
       },
       "lat": 26.127,
-      "lon": -80.248
+      "lon": -80.248,
+      "group": 3
     },
     {
       "name": "Plantation Bites",
@@ -34,7 +35,8 @@
         "country": "USA"
       },
       "lat": 26.128,
-      "lon": -80.247
+      "lon": -80.247,
+      "group": 3
     },
     {
       "name": "The Plantation Deli",
@@ -46,7 +48,8 @@
         "country": "USA"
       },
       "lat": 26.129,
-      "lon": -80.246
+      "lon": -80.246,
+      "group": 3
     },
     {
       "name": "Sunrise Sushi",
@@ -58,7 +61,8 @@
         "country": "USA"
       },
       "lat": 26.153,
-      "lon": -80.28
+      "lon": -80.28,
+      "group": 2
     },
     {
       "name": "Sunrise Tacos",
@@ -70,7 +74,8 @@
         "country": "USA"
       },
       "lat": 26.154,
-      "lon": -80.279
+      "lon": -80.279,
+      "group": 2
     },
     {
       "name": "Sunrise Caf\u00e9",
@@ -82,7 +87,8 @@
         "country": "USA"
       },
       "lat": 26.155,
-      "lon": -80.278
+      "lon": -80.278,
+      "group": 2
     },
     {
       "name": "Lauderhill Grill",
@@ -94,7 +100,8 @@
         "country": "USA"
       },
       "lat": 26.141,
-      "lon": -80.224
+      "lon": -80.224,
+      "group": 0
     },
     {
       "name": "Lauderhill Wraps",
@@ -106,7 +113,8 @@
         "country": "USA"
       },
       "lat": 26.142,
-      "lon": -80.223
+      "lon": -80.223,
+      "group": 0
     },
     {
       "name": "Lauderlake BBQ",
@@ -118,7 +126,8 @@
         "country": "USA"
       },
       "lat": 26.16,
-      "lon": -80.215
+      "lon": -80.215,
+      "group": 4
     },
     {
       "name": "Lauderlake Smoothies",
@@ -130,7 +139,8 @@
         "country": "USA"
       },
       "lat": 26.161,
-      "lon": -80.214
+      "lon": -80.214,
+      "group": 4
     },
     {
       "name": "Pine Island Pizzeria",
@@ -142,7 +152,8 @@
         "country": "USA"
       },
       "lat": 26.148,
-      "lon": -80.285
+      "lon": -80.285,
+      "group": 2
     },
     {
       "name": "Pine Island Burgers",
@@ -154,7 +165,8 @@
         "country": "USA"
       },
       "lat": 26.149,
-      "lon": -80.284
+      "lon": -80.284,
+      "group": 2
     },
     {
       "name": "Cooper Coffee",
@@ -166,7 +178,8 @@
         "country": "USA"
       },
       "lat": 26.051,
-      "lon": -80.276
+      "lon": -80.276,
+      "group": 1
     },
     {
       "name": "Cooper Donuts",
@@ -178,7 +191,8 @@
         "country": "USA"
       },
       "lat": 26.052,
-      "lon": -80.275
+      "lon": -80.275,
+      "group": 1
     },
     {
       "name": "Cooper Kitchen",
@@ -190,7 +204,126 @@
         "country": "USA"
       },
       "lat": 26.053,
-      "lon": -80.274
+      "lon": -80.274,
+      "group": 1
+    }
+  ],
+  "edges": [
+    {
+      "from": "Sunrise Sushi",
+      "to": "Sunrise Tacos"
+    },
+    {
+      "from": "Cooper Coffee",
+      "to": "Cooper Donuts"
+    },
+    {
+      "from": "Sunrise Caf\u00e9",
+      "to": "Lauderhill Wraps"
+    },
+    {
+      "from": "Plantation Pizza",
+      "to": "The Plantation Deli"
+    },
+    {
+      "from": "Warehouse",
+      "to": "Lauderhill Grill"
+    },
+    {
+      "from": "Lauderlake BBQ",
+      "to": "Lauderlake Smoothies"
+    },
+    {
+      "from": "Lauderlake Smoothies",
+      "to": "Pine Island Burgers"
+    },
+    {
+      "from": "Plantation Bites",
+      "to": "Sunrise Sushi"
+    },
+    {
+      "from": "Cooper Donuts",
+      "to": "Cooper Kitchen"
+    },
+    {
+      "from": "Lauderhill Wraps",
+      "to": "Pine Island Pizzeria"
+    },
+    {
+      "from": "Sunrise Caf\u00e9",
+      "to": "Lauderhill Grill"
+    },
+    {
+      "from": "Sunrise Caf\u00e9",
+      "to": "Lauderlake Smoothies"
+    },
+    {
+      "from": "Lauderlake BBQ",
+      "to": "Pine Island Burgers"
+    },
+    {
+      "from": "Plantation Pizza",
+      "to": "Plantation Bites"
+    },
+    {
+      "from": "Lauderlake Smoothies",
+      "to": "Pine Island Pizzeria"
+    },
+    {
+      "from": "The Plantation Deli",
+      "to": "Sunrise Tacos"
+    },
+    {
+      "from": "Plantation Bites",
+      "to": "The Plantation Deli"
+    },
+    {
+      "from": "Plantation Pizza",
+      "to": "Sunrise Tacos"
+    },
+    {
+      "from": "Pine Island Burgers",
+      "to": "Cooper Donuts"
+    },
+    {
+      "from": "Lauderhill Grill",
+      "to": "Lauderhill Wraps"
+    },
+    {
+      "from": "Lauderhill Grill",
+      "to": "Pine Island Pizzeria"
+    },
+    {
+      "from": "Cooper Coffee",
+      "to": "Cooper Kitchen"
+    },
+    {
+      "from": "Sunrise Caf\u00e9",
+      "to": "Lauderlake BBQ"
+    },
+    {
+      "from": "Plantation Pizza",
+      "to": "Sunrise Sushi"
+    },
+    {
+      "from": "Warehouse",
+      "to": "Lauderhill Wraps"
+    },
+    {
+      "from": "Lauderlake BBQ",
+      "to": "Pine Island Pizzeria"
+    },
+    {
+      "from": "Plantation Bites",
+      "to": "Sunrise Tacos"
+    },
+    {
+      "from": "The Plantation Deli",
+      "to": "Sunrise Sushi"
+    },
+    {
+      "from": "Pine Island Burgers",
+      "to": "Cooper Coffee"
     }
   ]
 }

@@ -5,6 +5,7 @@ from core.node_with_address import NodeWithAddress
 from core.location import Address, Coordinate
 from visualize.map_generator import generate_map
 
+
 def main():
     # Load grouped graph structure
     with open("data/graph_with_grouped_edges.json") as f:
@@ -51,6 +52,7 @@ def main():
     # Optional: generate map with highlighted path
     generate_map(graph, path, output_path="deliveries_map.html")
     print("🗺️ Map saved to 'deliveries_map.html'.")
+
 
 if __name__ == "__main__":
     main()

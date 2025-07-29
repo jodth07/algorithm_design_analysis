@@ -21,3 +21,7 @@ class BaseMetrics(ABC):
     @abstractmethod
     def reset(self):
         pass
+
+    @abstractmethod
+    def set_memory_used(self, bytes_used):
+        pass

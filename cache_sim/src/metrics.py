@@ -6,6 +6,7 @@ class Metrics(BaseMetrics):
         self.hits = 0
         self.misses = 0
         self.evictions = 0
+        self.memory_used_kb = 0.0
 
     def record_hit(self):
         self.hits += 1
@@ -15,6 +16,9 @@ class Metrics(BaseMetrics):
 
     def record_eviction(self):
         self.evictions += 1
+
+    def set_memory_used(self, bytes_used):
+        self.memory_used_kb = round(bytes_used / 1024, 2)
 
     def total_accesses(self):
         return self.hits + self.misses
@@ -40,6 +44,7 @@ class Metrics(BaseMetrics):
             "Hit Rate": round(self.hit_rate(), 4),
             "Miss Rate": round(self.miss_rate(), 4),
             "Eviction Rate": round(self.eviction_rate(), 4),
+            "Memory Used (KB)": self.memory_used_kb,
         }
 
     def __str__(self):
@@ -49,3 +54,4 @@ class Metrics(BaseMetrics):
         self.hits = 0
         self.misses = 0
         self.evictions = 0
+        self.memory_used_kb = 0.0

@@ -1,0 +1,329 @@
+{
+  "warehouse": {
+    "name": "Warehouse",
+    "address": {
+      "street": "123 Depot Ave",
+      "city": "Fort Lauderdale",
+      "state": "FL",
+      "zipcode": "33301",
+      "country": "USA"
+    },
+    "lat": 26.1224,
+    "lon": -80.1373
+  },
+  "nodes": [
+    {
+      "name": "Plantation Pizza",
+      "address": {
+        "street": "101 Plantation Ave",
+        "city": "Plantation",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.127,
+      "lon": -80.248,
+      "group": 3
+    },
+    {
+      "name": "Plantation Bites",
+      "address": {
+        "street": "102 Plantation Dr",
+        "city": "Plantation",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.128,
+      "lon": -80.247,
+      "group": 3
+    },
+    {
+      "name": "The Plantation Deli",
+      "address": {
+        "street": "103 Plantation Rd",
+        "city": "Plantation",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.129,
+      "lon": -80.246,
+      "group": 3
+    },
+    {
+      "name": "Sunrise Sushi",
+      "address": {
+        "street": "201 Sunrise Blvd",
+        "city": "Sunrise",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.153,
+      "lon": -80.28,
+      "group": 2
+    },
+    {
+      "name": "Sunrise Tacos",
+      "address": {
+        "street": "202 Sunrise Way",
+        "city": "Sunrise",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.154,
+      "lon": -80.279,
+      "group": 2
+    },
+    {
+      "name": "Sunrise Caf\u00e9",
+      "address": {
+        "street": "203 Sunrise Terrace",
+        "city": "Sunrise",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.155,
+      "lon": -80.278,
+      "group": 2
+    },
+    {
+      "name": "Lauderhill Grill",
+      "address": {
+        "street": "301 Lauderhill St",
+        "city": "Lauderhill",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.141,
+      "lon": -80.224,
+      "group": 0
+    },
+    {
+      "name": "Lauderhill Wraps",
+      "address": {
+        "street": "302 Lauderhill Ave",
+        "city": "Lauderhill",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.142,
+      "lon": -80.223,
+      "group": 0
+    },
+    {
+      "name": "Lauderlake BBQ",
+      "address": {
+        "street": "401 Lake Dr",
+        "city": "Lauderlake",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.16,
+      "lon": -80.215,
+      "group": 4
+    },
+    {
+      "name": "Lauderlake Smoothies",
+      "address": {
+        "street": "402 Lakeview Ave",
+        "city": "Lauderlake",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.161,
+      "lon": -80.214,
+      "group": 4
+    },
+    {
+      "name": "Pine Island Pizzeria",
+      "address": {
+        "street": "501 Pine Island Rd",
+        "city": "Pine Island",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.148,
+      "lon": -80.285,
+      "group": 2
+    },
+    {
+      "name": "Pine Island Burgers",
+      "address": {
+        "street": "502 Pine Grove Blvd",
+        "city": "Pine Island",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.149,
+      "lon": -80.284,
+      "group": 2
+    },
+    {
+      "name": "Cooper Coffee",
+      "address": {
+        "street": "601 Cooper City Blvd",
+        "city": "Cooper City",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.051,
+      "lon": -80.276,
+      "group": 1
+    },
+    {
+      "name": "Cooper Donuts",
+      "address": {
+        "street": "602 Cooper Rd",
+        "city": "Cooper City",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.052,
+      "lon": -80.275,
+      "group": 1
+    },
+    {
+      "name": "Cooper Kitchen",
+      "address": {
+        "street": "603 Cooper Ave",
+        "city": "Cooper City",
+        "state": "FL",
+        "zipcode": "33301",
+        "country": "USA"
+      },
+      "lat": 26.053,
+      "lon": -80.274,
+      "group": 1
+    }
+  ],
+  "edges": [
+    {
+      "from": "Sunrise Sushi",
+      "to": "Sunrise Tacos"
+    },
+    {
+      "from": "Cooper Coffee",
+      "to": "Cooper Donuts"
+    },
+    {
+      "from": "Sunrise Caf\u00e9",
+      "to": "Lauderhill Wraps"
+    },
+    {
+      "from": "Plantation Pizza",
+      "to": "The Plantation Deli"
+    },
+    {
+      "from": "Warehouse",
+      "to": "Lauderhill Grill"
+    },
+    {
+      "from": "Lauderlake BBQ",
+      "to": "Lauderlake Smoothies"
+    },
+    {
+      "from": "Lauderlake Smoothies",
+      "to": "Pine Island Burgers"
+    },
+    {
+      "from": "Plantation Bites",
+      "to": "Sunrise Sushi"
+    },
+    {
+      "from": "Cooper Donuts",
+      "to": "Cooper Kitchen"
+    },
+    {
+      "from": "Lauderhill Wraps",
+      "to": "Pine Island Pizzeria"
+    },
+    {
+      "from": "Sunrise Caf\u00e9",
+      "to": "Lauderhill Grill"
+    },
+    {
+      "from": "Sunrise Caf\u00e9",
+      "to": "Lauderlake Smoothies"
+    },
+    {
+      "from": "Lauderlake BBQ",
+      "to": "Pine Island Burgers"
+    },
+    {
+      "from": "Plantation Pizza",
+      "to": "Plantation Bites"
+    },
+    {
+      "from": "Lauderlake Smoothies",
+      "to": "Pine Island Pizzeria"
+    },
+    {
+      "from": "The Plantation Deli",
+      "to": "Sunrise Tacos"
+    },
+    {
+      "from": "Plantation Bites",
+      "to": "The Plantation Deli"
+    },
+    {
+      "from": "Plantation Pizza",
+      "to": "Sunrise Tacos"
+    },
+    {
+      "from": "Pine Island Burgers",
+      "to": "Cooper Donuts"
+    },
+    {
+      "from": "Lauderhill Grill",
+      "to": "Lauderhill Wraps"
+    },
+    {
+      "from": "Lauderhill Grill",
+      "to": "Pine Island Pizzeria"
+    },
+    {
+      "from": "Cooper Coffee",
+      "to": "Cooper Kitchen"
+    },
+    {
+      "from": "Sunrise Caf\u00e9",
+      "to": "Lauderlake BBQ"
+    },
+    {
+      "from": "Plantation Pizza",
+      "to": "Sunrise Sushi"
+    },
+    {
+      "from": "Warehouse",
+      "to": "Lauderhill Wraps"
+    },
+    {
+      "from": "Lauderlake BBQ",
+      "to": "Pine Island Pizzeria"
+    },
+    {
+      "from": "Plantation Bites",
+      "to": "Sunrise Tacos"
+    },
+    {
+      "from": "The Plantation Deli",
+      "to": "Sunrise Sushi"
+    },
+    {
+      "from": "Pine Island Burgers",
+      "to": "Cooper Coffee"
+    }
+  ]
+}

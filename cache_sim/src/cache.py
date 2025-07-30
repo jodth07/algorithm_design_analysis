@@ -1,11 +1,11 @@
 from collections import deque, OrderedDict
-from typing import Union
-from base_cache import BaseCache
-from metrics import Metrics
+from cache_sim.src.base_cache import BaseCache
+from cache_sim.src.metrics import Metrics
 
 
 class Cache(BaseCache):
     def __init__(self, size, policy="LRU"):
+        super().__init__(size)
         self.size = size
         self.policy = policy.upper()
         self.metrics = Metrics()

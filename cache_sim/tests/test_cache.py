@@ -1,5 +1,5 @@
 import unittest
-from cache import Cache
+from cache_sim.src.cache import Cache
 
 
 class TestCacheFIFO(unittest.TestCase):

@@ -2,13 +2,25 @@ import csv
 import os
 import tracemalloc
 
-from cache import Cache
-from parser import SyntheticParser, ZipfianParser
+from cache_sim.src.cache import Cache  # Legacy fallback for FIFO/LRU wrapper
+from cache_sim.src.arc_cache import ARCCache
+from cache_sim.src.clock_cache import ClockCache
+from cache_sim.src.parser import SyntheticParser, ZipfianParser
+
+
+def get_cache(policy, size):
+    if policy == "FIFO" or policy == "LRU":
+        return Cache(size=size, policy=policy)
+    elif policy == "CLOCK":
+        return ClockCache(size=size)
+    elif policy == "ARC":
+        return ARCCache(size=size)
+    else:
+        raise ValueError(f"Unsupported cache policy: {policy}")
 
 
 def run_experiment(cache_sizes: list[int]):
-    # cache_sizes = [4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    policies = ["FIFO", "LRU"]
+    policies = ["FIFO", "LRU", "CLOCK", "ARC"]
     trace_types = ["Synthetic", "Zipfian"]
     trials = 3
     results = []
@@ -22,22 +34,18 @@ def run_experiment(cache_sizes: list[int]):
                 avg_memory_kb = 0
 
                 for t in range(trials):
-                    seed = 88 + t
+                    seed = 42 + t
                     if trace_type == "Synthetic":
                         parser = SyntheticParser(
-                            num_accesses=100_000, address_space=5_000, seed=seed
+                            num_accesses=10000, address_space=50, seed=seed
                         )
                     else:
                         parser = ZipfianParser(
-                            num_accesses=100_000,
-                            address_space=5_000,
-                            skew=1.2,
-                            seed=seed,
+                            num_accesses=10000, address_space=50, skew=1.2, seed=seed
                         )
-
                     trace = parser.load()
                     tracemalloc.start()
-                    cache = Cache(size=size, policy=policy)
+                    cache = get_cache(policy, size)
                     for addr in trace:
                         cache.access(addr)
                     _, peak = tracemalloc.get_traced_memory()
@@ -61,8 +69,8 @@ def run_experiment(cache_sizes: list[int]):
                     }
                 )
 
+    file_name = f"cache_experiment_results_arc_clock_{cache_sizes[-1]}.csv"
     # Save to CSV
-    file_name = f"cache_experiment_results_tracked_{cache_sizes[-1]}.csv"
     file_path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         "..",

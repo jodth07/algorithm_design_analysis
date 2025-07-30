@@ -34,6 +34,7 @@ class BaseCache(ABC):
                 if self.total_accesses
                 else 0.0
             ),
+            "Eviction Rate": round(self.evictions / self.total_accesses, 4) if self.total_accesses else 0.0,
         }
 
     @abstractmethod

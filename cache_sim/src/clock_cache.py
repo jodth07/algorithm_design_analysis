@@ -1,4 +1,4 @@
-from base_cache import BaseCache
+from cache_sim.src.base_cache import BaseCache
 
 
 class ClockCache(BaseCache):

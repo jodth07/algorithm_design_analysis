@@ -1,5 +1,5 @@
 from collections import deque
-from base_cache import BaseCache
+from cache_sim.src.base_cache import BaseCache
 
 
 class ARCCache(BaseCache):
@@ -62,7 +62,9 @@ class ARCCache(BaseCache):
                 len(self.T1) + len(self.T2) + len(self.B1) + len(self.B2)
                 >= 2 * self.size
             ):
-                self.B2.pop()
+
+                if len(self.B2) > 0:
+                    self.B2.pop()
             self._replace(address)
 
         self.T1.appendleft(address)

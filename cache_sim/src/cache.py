@@ -1,6 +1,6 @@
 from collections import deque, OrderedDict
-from base_cache import BaseCache
-from metrics import Metrics
+from cache_sim.src.base_cache import BaseCache
+from cache_sim.src.metrics import Metrics
 
 
 class Cache(BaseCache):

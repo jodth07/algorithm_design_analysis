@@ -1,4 +1,4 @@
-from base_metrics import BaseMetrics
+from cache_sim.src.base_metrics import BaseMetrics
 
 
 class Metrics(BaseMetrics):
